@@ -14,7 +14,7 @@ function* addTag(action: ReturnType<typeof actions.addTagAC>) {
     }
     yield put(actions.addTag(payload));
   } catch (error) {
-    yield call(() => toastr.error(error, ""));
+    yield call(() => toastr.error(error, "", { attention: true }));
   }
 }
 
@@ -23,12 +23,14 @@ function* addTagOfNote(action: ReturnType<typeof actions.addTagOfNoteAC>) {
     const { payload } = action;
     const tagsArrNote = yield select(getTagsOfNote);
     if (tagsArrNote.some(item => item.tag === payload)) {
-      yield call(() => toastr.success("This tags is already added!", ""));
+      yield call(() =>
+        toastr.warning("", "This tags is already added!", { attention: true })
+      );
       return;
     }
     yield put(actions.addTagOfNote(payload));
   } catch (error) {
-    yield call(() => toastr.error(error, ""));
+    yield call(() => toastr.error(error, "", { attention: true }));
   }
 }
 
@@ -37,7 +39,7 @@ function* removeTag(action: ReturnType<typeof actions.removeTagAC>) {
     const { payload } = action;
     yield put(actions.removeTag(payload));
   } catch (error) {
-    yield call(() => toastr.error(error, ""));
+    yield call(() => toastr.error(error, "", { attention: true }));
   }
 }
 

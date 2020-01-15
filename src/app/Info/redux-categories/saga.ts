@@ -19,7 +19,7 @@ function* removeCategory(action: ReturnType<typeof actions.removeCategoryAC>) {
     const { payload } = action;
     yield put(actions.removeCategory(payload));
   } catch (error) {
-    yield call(() => toastr.error(error, ""));
+    yield call(() => toastr.error(error, "", { attention: true }));
   }
 }
 
@@ -28,7 +28,11 @@ function* addCategory(action: ReturnType<typeof actions.addCategoryAC>) {
     const { payload } = action;
     const category = yield select(getCategories);
     if (category.some(item => item.categoryValue === payload.categoryValue)) {
-      yield call(() => toastr.success("This category is already added!", ""));
+      yield call(() =>
+        toastr.warning("This category is already added!", "", {
+          attention: true,
+        })
+      );
       return;
     } else if (category.some(item => item.id === payload.id)) {
       yield put(actions.changeCurrentCategory(payload));
@@ -48,12 +52,16 @@ function* addCategoryOfNote(
     const { payload } = action;
     const categoryArrNote = yield select(getCategoriesArrNote);
     if (categoryArrNote.some(item => item.category === payload.categoryValue)) {
-      yield call(() => toastr.success("This category is already added!", ""));
+      yield call(() =>
+        toastr.warning("This category is already added!", "", {
+          attention: true,
+        })
+      );
       return;
     }
     yield put(actions.addCategoryOfNote(payload));
   } catch (error) {
-    yield call(() => toastr.error(error, ""));
+    yield call(() => toastr.error(error, "", { attention: true }));
   }
 }
 

@@ -87,7 +87,9 @@ const NotesContainer: React.FC<Props> = ({
   colorValue,
   searchValue,
   colorArr,
-  actions,
+  tagsActions,
+  notesActions,
+  categoriesActions,
 }) => {
   const [isNoteInfo, setNoteInfo] = useState(false);
   const [tree, setTree] = useState([]);
@@ -99,60 +101,60 @@ const NotesContainer: React.FC<Props> = ({
 
   const editNote = (id, text, tags, categories, color) => {
     setNoteInfo(true);
-    actions.changeNoteValueAC(text);
-    actions.changeCurrentIdNoteAC(id);
-    actions.changeTagOfNoteAC(tags);
-    actions.changeCategoryOfNoteAC(categories);
-    actions.changeColorValueAC(color);
+    notesActions.changeNoteValueAC(text);
+    notesActions.changeCurrentIdNoteAC(id);
+    tagsActions.changeTagOfNoteAC(tags);
+    categoriesActions.changeCategoryOfNoteAC(categories);
+    notesActions.changeColorValueAC(color);
   };
 
   const addTag = (id, tag) => {
     const data = { id, tag, currentTag };
-    actions.checkTagsNoteAC(data);
+    notesActions.checkTagsNoteAC(data);
     const addTagData = { id, tag };
-    actions.addTagAC(addTagData);
+    tagsActions.addTagAC(addTagData);
   };
 
   const removeTag = (id, currentTagDel) => {
-    actions.removeTagAC(id);
-    actions.removeTagOfNoteAC(currentTagDel);
+    tagsActions.removeTagAC(id);
+    notesActions.removeTagOfNoteAC(currentTagDel);
   };
 
   const editTag = (id, text) => {
-    actions.changeTagsValueAC(text);
-    actions.changeCurrentIdTagAC(id);
+    tagsActions.changeTagsValueAC(text);
+    tagsActions.changeCurrentIdTagAC(id);
   };
 
   const removeCategory = (id, currentCategoryDel) => {
-    actions.removeCategoryAC(id);
-    actions.removeCategoryOfNoteAC(currentCategoryDel);
+    categoriesActions.removeCategoryAC(id);
+    notesActions.removeCategoryOfNoteAC(currentCategoryDel);
   };
 
   const editCategoryItem = (id, category) => {
     const data = { id, category, currentCategory };
-    actions.checkCategoriesNoteAC(data);
+    notesActions.checkCategoriesNoteAC(data);
     const addCategoryData = { id, categoryValue: category };
-    actions.addCategoryAC(addCategoryData);
+    categoriesActions.addCategoryAC(addCategoryData);
   };
 
   const editCategory = (id, text) => {
-    actions.setCategoryValueAC(text);
-    actions.setCurrentCategoryIdAC(id);
+    categoriesActions.setCategoryValueAC(text);
+    categoriesActions.setCurrentCategoryIdAC(id);
   };
 
   const cleanValue = () => {
-    actions.changeNoteValueAC("");
-    actions.changeTagsValueAC("");
-    actions.changeTagOfNoteAC([]);
-    actions.changeCategoryOfNoteAC([]);
-    actions.changeColorValueAC("#fdcb6e");
+    notesActions.changeNoteValueAC("");
+    tagsActions.changeTagsValueAC("");
+    tagsActions.changeTagOfNoteAC([]);
+    categoriesActions.changeCategoryOfNoteAC([]);
+    notesActions.changeColorValueAC("#fdcb6e");
   };
 
   const clickItem = e => {
     e.target.blur();
     setNoteInfo(true);
     cleanValue();
-    actions.changeCurrentIdNoteAC(null);
+    notesActions.changeCurrentIdNoteAC(null);
   };
 
   const classes = useStyles();
@@ -169,10 +171,10 @@ const NotesContainer: React.FC<Props> = ({
           editCategoryItem={editCategoryItem}
           currentIdTag={currentIdTag}
           currentIdCategory={currentIdCategory}
-          getActiveTag={actions.changeActiveTagAC}
-          getActiveCategory={actions.setActiveCategoryAC}
-          getTagBeforeEdit={actions.setCurrentTagAC}
-          getCategoryBeforeEdit={actions.setCurrentCategoryAC}
+          getActiveTag={tagsActions.changeActiveTagAC}
+          getActiveCategory={categoriesActions.setActiveCategoryAC}
+          getTagBeforeEdit={tagsActions.setCurrentTagAC}
+          getCategoryBeforeEdit={categoriesActions.setCurrentCategoryAC}
           removeCategory={removeCategory}
           tree={tree}
           removeTag={removeTag}
@@ -184,9 +186,9 @@ const NotesContainer: React.FC<Props> = ({
           activeTag={activeTag}
           activeCategory={activeCategory}
           searchValue={searchValue}
-          getActiveTag={actions.changeActiveTagAC}
-          getSearchValue={actions.changeSearchValueAC}
-          getActiveCategory={actions.setActiveCategoryAC}
+          getActiveTag={tagsActions.changeActiveTagAC}
+          getSearchValue={notesActions.changeSearchValueAC}
+          getActiveCategory={categoriesActions.setActiveCategoryAC}
         />
 
         <AddNote clickItem={clickItem} />
@@ -194,9 +196,9 @@ const NotesContainer: React.FC<Props> = ({
         {notes.length ? (
           <NotesList
             notes={notes}
-            removeNote={actions.removeNoteAC}
-            getActiveTag={actions.changeActiveTagAC}
-            getActiveCategory={actions.setActiveCategoryAC}
+            removeNote={notesActions.removeNoteAC}
+            getActiveTag={tagsActions.changeActiveTagAC}
+            getActiveCategory={categoriesActions.setActiveCategoryAC}
             activeTag={activeTag}
             activeCategory={activeCategory}
             searchValue={searchValue}
@@ -207,26 +209,26 @@ const NotesContainer: React.FC<Props> = ({
 
       {isNoteInfo ? (
         <NoteInfoContainer
-          addNote={actions.addNoteAC}
+          addNote={notesActions.addNoteAC}
           addTag={addTag}
           tags={tags}
           changeNoteInfo={setNoteInfo}
           currentIdNote={currentIdNote}
-          changeTag={actions.changeTagsValueAC}
-          addTagsArrOfNote={actions.addTagOfNoteAC}
+          changeTag={tagsActions.changeTagsValueAC}
+          addTagsArrOfNote={tagsActions.addTagOfNoteAC}
           tagsArrNote={tagsArrNote}
-          removeTagNoteInfo={actions.removeArrTagOfNoteAC}
+          removeTagNoteInfo={tagsActions.removeArrTagOfNoteAC}
           colorArr={colorArr}
           colorValue={colorValue}
-          getColorValue={actions.changeColorValueAC}
-          addCategory={actions.addCategoryAC}
+          getColorValue={notesActions.changeColorValueAC}
+          addCategory={categoriesActions.addCategoryAC}
           category={category}
           idParentCategory={idParentCategory}
-          getParentCategory={actions.setParentCategoryAC}
-          addChildCategory={actions.addChildCategoryAC}
+          getParentCategory={categoriesActions.setParentCategoryAC}
+          addChildCategory={categoriesActions.addChildCategoryAC}
           categoryArrNote={categoryArrNote}
-          addCategoryArrOfNote={actions.addCategoryOfNoteAC}
-          removeCategoryNoteInfo={actions.removeArrCategoryOfNoteAC}
+          addCategoryArrOfNote={categoriesActions.addCategoryOfNoteAC}
+          removeCategoryNoteInfo={categoriesActions.removeArrCategoryOfNoteAC}
           noteValue={noteValue}
         />
       ) : null}
@@ -235,9 +237,9 @@ const NotesContainer: React.FC<Props> = ({
 };
 
 type DispatchProps = {
-  actions: typeof categoriesActionCreatores &
-    typeof tagsActionCreatores &
-    typeof noteActionCreatores;
+  tagsActions: typeof tagsActionCreatores;
+  notesActions: typeof noteActionCreatores;
+  categoriesActions: typeof categoriesActionCreatores;
 };
 
 const mapStateToProps = (state): NotesContainerStateProps => ({
@@ -265,10 +267,20 @@ const mapStateToProps = (state): NotesContainerStateProps => ({
 export default connect<NotesContainerStateProps, DispatchProps>(
   mapStateToProps,
   dispatch => ({
-    actions: bindActionCreators(
+    tagsActions: bindActionCreators(
       {
         ...tagsActionCreatores,
+      },
+      dispatch
+    ),
+    notesActions: bindActionCreators(
+      {
         ...noteActionCreatores,
+      },
+      dispatch
+    ),
+    categoriesActions: bindActionCreators(
+      {
         ...categoriesActionCreatores,
       },
       dispatch
