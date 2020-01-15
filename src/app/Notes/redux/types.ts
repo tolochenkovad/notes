@@ -1,0 +1,12 @@
+export const ADD_NOTE_SAGA = `/notes/ADD_NOTE_SAGA` as const;
+export const ADD_NOTE = `/notes/ADD_NOTE` as const;
+export const REMOVE_NOTE = `/notes/REMOVE_NOTE` as const;
+export const EDIT_NOTE = `/notes/EDIT_NOTE` as const;
+export const CHECKING_TAGS = `/notes/CHECKING_TAGS` as const;
+export const REMOVE_TAG_OF_NOTE = `/notes/REMOVE_TAG_OF_NOTE` as const;
+export const CHANGE_NOTE_VALUE = `/notes/CHANGE_NOTE_VALUE` as const;
+export const CHANGE_CURRENT_ID_NOTE = `/notes/CHANGE_CURRENT_ID_NOTE` as const;
+export const REMOVE_CATEGORY_OF_NOTE = `/notes/REMOVE_CATEGORY_OF_NOTE` as const;
+export const CHECKING_CATEGORY = `/notes/CHECKING_CATEGORY` as const;
+export const CHANGE_COLOR_VALUE = `/notes/CHANGE_COLOR_VALUE` as const;
+export const CHANGE_SEARCH_VALUE = `/notes/CHANGE_SEARCH_VALUE` as const;

@@ -1,0 +1,13 @@
+export const CHANGE_CURRENT_TAG = `/tags/CHANGE_CURRENT_TAG` as const;
+export const ADD_TAG_SAGA = `/tags/ADD_TAG_SAGA` as const;
+export const ADD_TAG = `/tags/ADD_TAG` as const;
+export const REMOVE_TAG_SAGA = `/tags/REMOVE_TAG_SAGA` as const;
+export const REMOVE_TAG = `/tags/REMOVE_TAG` as const;
+export const ADD_TAG_OF_NOTE_SAGA = `/tags/ADD_TAG_OF_NOTE_SAGA` as const;
+export const ADD_TAG_OF_NOTE = `/tags/ADD_TAG_OF_NOTE` as const;
+export const REMOVE_ARR_TAG_OF_NOTE = `/tags/REMOVE_ARR_TAG_OF_NOTE` as const;
+export const CHANGE_TAG_OF_NOTE = `/tags/CHANGE_TAG_OF_NOTE` as const;
+export const CHANGE_TAG_VALUE = `/tags/CHANGE_TAG_VALUE` as const;
+export const CHANGE_CURRENT_ID_TAG = `/tags/CHANGE_CURRENT_ID_TAG` as const;
+export const CHANGE_ACTIVE_TAG = `/tags/CHANGE_ACTIVE_TAG` as const;
+export const SET_CURRENT_TAG = `/tags/SET_CURRENT_TAG` as const;

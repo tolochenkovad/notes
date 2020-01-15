@@ -1,0 +1,16 @@
+export const CHANGE_CURRENT_CATEGORY = `/categories/CHANGE_CURRENT_CATEGORY` as const;
+export const REMOVE_CATEGORY_SAGA = `/categories/REMOVE_CATEGORY_SAGA` as const;
+export const REMOVE_CATEGORY = `/categories/REMOVE_CATEGORY` as const;
+export const ADD_CATEGORY_OF_NOTE_SAGA = `/categories/ADD_CATEGORY_OF_NOTE_SAGA` as const;
+export const ADD_CATEGORY_OF_NOTE = `/categories/ADD_CATEGORY_OF_NOTE` as const;
+export const CHANGE_CATEGORY_OF_NOTE = `/categories/CHANGE_CATEGORY_OF_NOTE` as const;
+export const ADD_CATEGORY_SAGA = `/categories/ADD_CATEGORY_SAGA` as const;
+export const ADD_CATEGORY = `/categories/ADD_CATEGORY` as const;
+export const REMOVE_ARR_CATEGORY_OF_NOTE = `/categories/REMOVE_ARR_CATEGORY_OF_NOTE` as const;
+export const SET_CATEGORY_VALUE = `/categories/SET_CATEGORY_VALUE` as const;
+export const SET_PARENT_CATEGORY = `/categories/SET_PARENT_CATEGORY` as const;
+export const SET_CURRENT_CATEGORY = `/categories/SET_CURRENT_CATEGORY` as const;
+export const SET_CURRENT_ID_CATEGORY = `/categories/SET_CURRENT_ID_CATEGORY` as const;
+export const SET_ACTIVE_CATEGORY = `/categories/SET_ACTIVE_CATEGORY` as const;
+export const ADD_CHILD_CATEGORY_SAGA = `/categories/ADD_CHILD_CATEGORY_SAGA` as const;
+export const SET_ID_PARENT = `/categories/SET_ID_PARENT` as const;
