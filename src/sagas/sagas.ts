@@ -4,11 +4,7 @@ import tagsSaga from "../app/Info/redux-tags/saga";
 import categoriesSaga from "../app/Info/redux-categories/saga";
 
 function* rootSaga() {
-  yield all([
-    spawn(notesSaga),
-    spawn(tagsSaga),
-    spawn(categoriesSaga)
-  ]);
+  yield all([spawn(notesSaga), spawn(tagsSaga), spawn(categoriesSaga)]);
 }
 
 export default rootSaga;
