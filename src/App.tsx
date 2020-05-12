@@ -18,8 +18,6 @@ type Props = {
   changeLocale: typeof changeLocale;
 };
 
-console.log('test');
-
 const App: React.FC<Props> = ({ locale, changeLocale }) => (
   <IntlProvider locale={locale} messages={languageObject[locale]}>
     <CssBaseline />

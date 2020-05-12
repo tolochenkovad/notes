@@ -2,6 +2,7 @@
   "name": "notes-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tolochenkovad.github.io/notes/",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
@@ -28,7 +29,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write \"**/*.+(ts|tsx)\""
+    "prettier": "prettier --write \"**/*.+(ts|tsx)\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -70,6 +73,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "gh-pages": "^2.2.0",
     "husky": "^3.1.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
